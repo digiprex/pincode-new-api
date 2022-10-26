@@ -9,7 +9,7 @@ const checkPincode = async (req) => {
       const token = await getAuthToken();
       let config = {
         method: 'get',
-        url: `${process.env.SHIP_ROCKET_URL}?pickup_postcode=500034&delivery_postcode=${req.body.pincode}&weight=1&cod=0`,
+        url: `${process.env.SHIP_ROCKET_URL}/courier/serviceability?pickup_postcode=500034&delivery_postcode=${req.body.pincode}&weight=1&cod=0`,
         headers: { 
           'Authorization': `Bearer ${token.token}`
         }
@@ -45,7 +45,7 @@ const checkPincode = async (req) => {
       });
       let config = {
         method: "post",
-        url: "https://apiv2.shiprocket.in/v1/external/auth/login",
+        url: `${process.env.SHIP_ROCKET_URL}/auth/login`,
         headers: {
           "Content-Type": "application/json",
         },
